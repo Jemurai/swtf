@@ -1,11 +1,3 @@
-#Given(/^the username is "(.*?)"$/) do |arg1|
-#  @username = arg1
-#end
-
-#When(/^the password is "(.*?)"$/) do |arg1|
-#  @password = arg1
-#end
-
 Then(/^the account should be locked out\.$/) do
 # Then(/^the result should be "(.*?)"$/) do |arg1|
   11.times do 
