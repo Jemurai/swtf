@@ -8,20 +8,28 @@ end
 
 Then(/^the field result should be "(.*?)"$/) do |arg1|
   @result = arg1
-  
-  login_as_user('mkonda@jemurai.com', 'password')
   uniq = Time.now.to_s
-  new_project("XSS Name" + uniq, "XSS Desc"+ uniq)
-
-  click_button "Edit"
+  run = SecureRandom.uuid
+  user = "test+#{run}@jemurai.com"
+  register_as_user(user, "password")
+  logout(user)
+  login_as_user(user, 'password')
+  
+  new_project("XSS Name #{@field} #{uniq}", "XSS Desc #{@field}"+ uniq)
+  
+  click_link 'Edit'
   
   fill_in @field, :with => @value
   click_button "Update Project"
   
   if @result == "xss" 
-    expect(page).to have_content @value
+    puts "Accepting"
+    page.driver.browser.switch_to.alert.accept  
+#    expect(page).to have_content @value
+    
   else
-    expect(page).to have_content ''
+    puts "No dialog..."
+    expect(page).to have_content @value
   end
   
 end

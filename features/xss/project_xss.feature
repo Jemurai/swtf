@@ -8,8 +8,10 @@ Feature: user is prevented from putting XSS in project form fields
 		When the value is "<value>"
 		Then the field result should be "<result>"
 		
-		Scenarios: no username
+		Scenarios: xss in fields
 			| fieldname | value | result |
-			| project[name]   | <script>alert('project[name]->xss');</script>   | xss    |
+			| project[name]  | ProjectName | noxss |
+			| project[name]   | ProjectName <script>alert('project[name]->xss');</script>   | xss    |
+			| project[description]   | ProjectDescription <script>alert('project[description]->xss');</script>   | noxss    |
 			
 			

@@ -1,18 +1,33 @@
 module TriageDriver
   
+  def register_as_user(username, password)
+    visit 'users/sign_up'
+    fill_in "user[email]", :with => username
+    fill_in "user[password]", :with => password
+    fill_in "user[password_confirmation]", :with => password
+    click_button "Create My Account"
+  end
+  
+  def logout(username)
+    click_link "Logout #{username}"
+  end
+  
   def login_as_user(username, password)
-     visit 'http://localhost:3000/users/sign_in'
-     fill_in "Email", :with => username
-     fill_in "Password", :with => password
+     visit '/users/sign_in'
+     fill_in "user[email]", :with => username
+     fill_in "user[password]", :with => password
      click_button "Sign in"  
   end
 
   def access_project(id)
-    visit 'http://localhost:3000/projects/' + id
+    visit '/projects/' + id
   end
 
   def new_project(name, description = nil, priority = 3, rank = 3, tier = 3,verified = false, rich_description = nil)
-     visit 'http://localhost:3000/projects/'
+     visit '/projects/'
+#     if page.driver.browser.switch_to.alert
+#       page.driver.browser.switch_to.alert.accept  
+#     end
      click_button "New Project"
      fill_in "project[name]", :with => name if name
      fill_in "project[description]", :with => description if description
