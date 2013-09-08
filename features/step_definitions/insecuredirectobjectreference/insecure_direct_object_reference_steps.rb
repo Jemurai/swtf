@@ -19,5 +19,5 @@ end
 
 Then(/^the system should prevent access$/) do
   visit @url
-  expect(page).should_not have_content "Forceful Browsing Desc"
+  expect(page).not_to have_content "Forceful Browsing Desc"
 end
