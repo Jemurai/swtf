@@ -8,11 +8,14 @@ end
 
 Then(/^the result should be "(.*?)"$/) do |arg1|
   @result = arg1
-  visit '/users/sign_in'
-  fill_in "Email", :with => @username
-  fill_in "Password", :with => @password
-  click_button "Sign in"
+  uuid = SecureRandom.uuid
+  user = "login_user_#{@username}_#{uuid}@jemurai.com"
+  register_as_user(user, "password")
   
+  logout(user)
+  
+  login_as_user(user, @password)
+    
   if @result == "fail"
     expect(page).to have_content 'Sign in'
   else  

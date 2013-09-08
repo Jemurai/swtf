@@ -26,5 +26,5 @@ Feature: user logs in
 		
 		Scenarios: correct password
 			| username | password | succeeded |
-			| mkonda@jemurai.com | password  | succeed      | 
+			| matt | password  | succeed      | 
 		
