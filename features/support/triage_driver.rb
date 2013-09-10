@@ -25,9 +25,6 @@ module TriageDriver
 
   def new_project(name, description = nil, priority = 3, rank = 3, tier = 3,verified = false, rich_description = nil)
      visit '/projects/'
-#     if page.driver.browser.switch_to.alert
-#       page.driver.browser.switch_to.alert.accept  
-#     end
      click_button "New Project"
      fill_in "project[name]", :with => name if name
      fill_in "project[description]", :with => description if description
