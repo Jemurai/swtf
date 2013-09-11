@@ -31,7 +31,7 @@ module TriageDriver
      fill_in "project[priority]", :with => priority if priority
      fill_in "project[rank]", :with => rank if rank
      fill_in "project[tier]", :with => tier if tier
-     fill_in "project[verified]", :with => verified if verified
+     # fill_in "project[verified]", :with => verified if verified
      fill_in "project[rich_description]", :with => rich_description if rich_description
      click_button "Create Project"
   end

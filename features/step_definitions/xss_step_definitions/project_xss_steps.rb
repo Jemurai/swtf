@@ -23,10 +23,18 @@ Then(/^the field result should be "(.*?)"$/) do |arg1|
   click_button "Update Project"
   
   if @result == "xss" 
-    puts "Accepting"
-    page.driver.browser.switch_to.alert.accept  
-#    expect(page).to have_content @value
-    
+    # This should have xss in it...did it stick?
+    alerted = false
+    begin 
+      page.driver.browser.switch_to.alert.accept   # For now assume any XSS has an alert.
+      alerted = true
+    rescue 
+    end
+    if alerted
+      fail("XSS Used to create Popup in #{@field} with #{@value}")  
+    else
+      puts "Good news, no xss where expected."
+    end
   else
     puts "No dialog..."
     expect(page).to have_content @value
