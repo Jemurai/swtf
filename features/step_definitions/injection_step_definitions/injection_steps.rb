@@ -16,8 +16,8 @@ Given(/^a new project created by a user for injection$/) do
   uuid = SecureRandom.uuid
   @user1 = "fb_user_1_#{uuid}@jemurai.com"
   register_as_user(@user1, "password")
-  logout(@user1)
-  login_as_user(@user1, 'password')
+#  logout(@user1)
+#  login_as_user(@user1, 'password')
   new_project("Injection Project", "Injection Project")
   @url = current_url 
 end

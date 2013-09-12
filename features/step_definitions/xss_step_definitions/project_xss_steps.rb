@@ -12,8 +12,8 @@ Then(/^the field result should be "(.*?)"$/) do |arg1|
   run = SecureRandom.uuid
   user = "test+#{run}@jemurai.com"
   register_as_user(user, "password")
-  logout(user)
-  login_as_user(user, 'password')
+#  logout(user)
+#  login_as_user(user, 'password')
   new_project("XSS Name #{@field} #{uniq}", "XSS Desc #{@field}"+ uniq)
   click_link 'Edit'
   fill_in @field, :with => @value
