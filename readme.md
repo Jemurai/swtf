@@ -8,13 +8,26 @@ One goal for SWTF is to provide examples of how to test for common security issu
 
 ### Running
 
->bundle install
->cucumber
+bundle install
+cucumber
 
 ### Details about Features
 
+Current coverage includes: 
+* Injection / Sql Injection
+* Cross Site Scripting
+* Mass Assignment
+* Cross Site Request Forgery
+* Secure Headers
+* Sensitive Data Exposure (Session Cookie)
+
+In progress: 
 * Login - Test 
 
+## Triage
 
+The tests are written to run against Triage (https://github.com/Jemurai/triage).  If you run that the tests should work against it.
+
+## License
 
 
