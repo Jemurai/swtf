@@ -8,12 +8,14 @@ One goal for SWTF is to provide examples of how to test for common security issu
 
 ### Running
 
+:::bash
 bundle install
 cucumber
 
 ### Details about Features
 
-Current coverage includes: 
+Current coverage includes:  
+
 * Injection / Sql Injection
 * Cross Site Scripting
 * Mass Assignment
@@ -21,7 +23,8 @@ Current coverage includes:
 * Secure Headers
 * Sensitive Data Exposure (Session Cookie)
 
-In progress: 
+In progress:   
+
 * Login - Test 
 
 ## Triage
@@ -29,5 +32,4 @@ In progress:
 The tests are written to run against Triage (https://github.com/Jemurai/triage).  If you run that the tests should work against it.
 
 ## License
-
-
+SWTF is licensed under MIT (http://opensource.org/licenses/mit-license.php)
