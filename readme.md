@@ -8,8 +8,7 @@ One goal for SWTF is to provide examples of how to test for common security issu
 
 ### Running
 
-:::shell
-bundle install
+bundle install  
 cucumber
 
 ### Details about Features
