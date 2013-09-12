@@ -13,19 +13,7 @@ end
 Then(/^the header value should be "(.*?)"$/) do |arg1|
   # Selenium doesn't itself get the headers so blend the approach.
   @result = arg1
-  ##uniq = Time.now.to_s
-  ##run = SecureRandom.uuid
-  ##user = "test+#{run}@jemurai.com"
-  ##register_as_user(user, "password")
-  ##logout(user)
-  ##login_as_user(user, 'password')
-  ##new_project("Headers Project #{uniq}", "Headers Project #{uniq}")
-  
-  # visit @page  
-  ##puts url
-  
   url = current_url
-  
   cookies = Capybara.current_session.driver.browser.manage.all_cookies
   csrf_token = Capybara.current_session.driver.browser.find_element(:xpath, "//meta[@name='csrf-token']").attribute('content');
   
@@ -55,11 +43,6 @@ Then(/^the header value should be "(.*?)"$/) do |arg1|
     else
       response.error!
     end
-  
-  
-  puts response.inspect
-  
-  puts "Response for #{@header} is #{response[@header]}"
   if response[@header] == @result
     #pass
   else

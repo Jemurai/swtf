@@ -4,23 +4,12 @@ require 'uri'
 When(/^the user sets verified to true$/) do
   click_link 'Edit'
   url = current_url
-  puts "URL in mass assignment is #{url}"
   cookies = Capybara.current_session.driver.browser.manage.all_cookies
   csrf_token = Capybara.current_session.driver.browser.find_element(:xpath, "//meta[@name='csrf-token']").attribute('content');
-  puts "CSRF Token #{csrf_token}"
   
   cookie = cookies[0]
   detail = cookie[:value]
-  puts "Detail is #{detail}"
-  puts "Cookie is #{cookie}"  
-  
-  
-  # Post to root, not the /edit
-  url = url.gsub( /\/edit\z/, '')
-  puts url
-  
-#  "authenticity_token"=>"96TtH4tLvYbfn/MqLtaMi5w3yzRVYCgjD2hTwldI9i4="
-  #            CSRF Token 96TtH4tLvYbfn/MqLtaMi5w3yzRVYCgjD2hTwldI9i4=
+  url = url.gsub( /\/edit\z/, '')  # Post to root, not the /edit
   
   # Switch mode to net::http
   uri = URI.parse(url)
@@ -39,17 +28,10 @@ When(/^the user sets verified to true$/) do
       "project[tier]" => "3", 
       "project[rich_description]"=>"hi", 
       "commit"=>"Update Project" })
-      
-  puts request
-  
   @response = http.request(request)
-  
 end
 
 Then(/^the update should not update verified$/) do
-
-  puts @response.body
-
   case @response
     when Net::HTTPSuccess     then @response
     when Net::HTTPRedirection then 
@@ -61,6 +43,5 @@ Then(/^the update should not update verified$/) do
       expect(@response.error!).to have_content '500' # response.error!
     end
   
-  expect(@response).to have_content 'Sign Up' # An indication we have been logged out.
-    
+  expect(@response).to have_content 'Sign Up' # An indication we have been logged out.    
 end

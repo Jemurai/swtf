@@ -14,14 +14,10 @@ Then(/^the field result should be "(.*?)"$/) do |arg1|
   register_as_user(user, "password")
   logout(user)
   login_as_user(user, 'password')
-  
   new_project("XSS Name #{@field} #{uniq}", "XSS Desc #{@field}"+ uniq)
-  
   click_link 'Edit'
-  
   fill_in @field, :with => @value
   click_button "Update Project"
-  
   if @result == "xss" 
     # This should have xss in it...did it stick?
     alerted = false
