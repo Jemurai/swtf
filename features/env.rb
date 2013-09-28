@@ -1,6 +1,8 @@
 require 'cucumber/formatter/unicode'
 
 require 'capybara/cucumber'
+require 'securerandom'
+
 
 Capybara.default_driver = :selenium
 
