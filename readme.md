@@ -32,3 +32,5 @@ The tests are written to run against Triage (https://github.com/Jemurai/triage).
 
 ## License
 SWTF is licensed under MIT (http://opensource.org/licenses/mit-license.php)
+
+This should probably be retired.
