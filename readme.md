@@ -1,6 +1,10 @@
-## SWTF 
+# SWTF 
 
 SWTF stands for security web testing framework.  SWTF is built upon Cucumber and RSpec to define example security tests in business domain language with specific working tests that illustrate how to test for real security issues.
+
+## Notice of Retirement
+
+This repository has been archived and is no longer actively maintained.
 
 ## Intended Usage
 
